@@ -26,11 +26,10 @@ for product in products:
 
 dannie = []
 for url in urls:
-    resource = requests.get(url)
     html = resource.text
     soup = BeautifulSoup(html, "html.parser")
     name = soup.select_one("h3").text
-    price = soup.select_one("span.display:none;").text
+    price = soup.select_one("span")
     img = soup.select_one("img").text
     info = str(soup.select_one("p.ingredients"))
     dannie.append((name, price, info, img))
